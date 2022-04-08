@@ -250,7 +250,13 @@ Parameters: dict mapping strs to ints ; int
 Returns: dict mapping strs to ints
 '''
 def mostCommonHashtags(hashtags, count): 
-    return
+    most_common = {} 
+    s = Counter(hashtags) 
+    n = count 
+    sort = list(sorted(s.items(), key=operator.itemgetter(1),reverse=True))[:n] 
+    for key,value in sort: 
+        most_common[key] = value 
+    return most_common
 
 
 '''
@@ -387,6 +393,7 @@ if __name__ == "__main__":
     test.testGetDataCountByState(df)
     test.testGetDataForRegion(df)
     test.testGetHashtagRates(df)
+    test.testMostCommonHashtags(df)
     ## Uncomment these for Week 3 ##
     """print("\n" + "#"*15 + " WEEK 3 OUTPUT " + "#" * 15 + "\n")
     test.runWeek3()"""
