@@ -392,11 +392,11 @@ if __name__ == "__main__":
     test.testGetRegionFromState()
     test.testAddColumns()"""
     ## Uncomment these for Week 2 ##
-    '''print("\n" + "#"*15 + " WEEK 2 TESTS " +  "#" * 16 + "\n")
+    print("\n" + "#"*15 + " WEEK 2 TESTS " +  "#" * 16 + "\n")
     test.week2Tests()
     print("\n" + "#"*15 + " WEEK 2 OUTPUT " + "#" * 15 + "\n")
-    test.runWeek2()'''
-    test.testFindSentiment()
+    test.runWeek2()
+    '''test.testFindSentiment()
     test.testAddSentimentColumn()
     df = pd.read_csv("data/politicaldata.csv")
     df1 = pd.read_csv("data/statemappings.csv")
@@ -406,7 +406,7 @@ if __name__ == "__main__":
     test.testGetDataForRegion(df)
     test.testGetHashtagRates(df)
     test.testMostCommonHashtags(df)
-    test.testGetHashtagSentiment(df)
+    test.testGetHashtagSentiment(df)'''
     ## Uncomment these for Week 3 ##
     """print("\n" + "#"*15 + " WEEK 3 OUTPUT " + "#" * 15 + "\n")
     test.runWeek3()"""
