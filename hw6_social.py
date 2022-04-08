@@ -290,6 +290,15 @@ Parameters: dict mapping strs to ints ; str
 Returns: None
 '''
 def graphStateCounts(stateCounts, title):
+    import matplotlib.pyplot as plt
+    lst = list(stateCounts.items())
+    for key,value in lst:
+        labels = key
+        yValues = value
+        plt.bar(labels,yValues,color='red')
+        plt.xlabel(title, loc='center')
+        plt.xticks(rotation="vertical")
+    plt.show()
     return
 
 
@@ -392,10 +401,10 @@ if __name__ == "__main__":
     test.testGetRegionFromState()
     test.testAddColumns()"""
     ## Uncomment these for Week 2 ##
-    print("\n" + "#"*15 + " WEEK 2 TESTS " +  "#" * 16 + "\n")
+    '''print("\n" + "#"*15 + " WEEK 2 TESTS " +  "#" * 16 + "\n")
     test.week2Tests()
     print("\n" + "#"*15 + " WEEK 2 OUTPUT " + "#" * 15 + "\n")
-    test.runWeek2()
+    test.runWeek2()'''
     '''test.testFindSentiment()
     test.testAddSentimentColumn()
     df = pd.read_csv("data/politicaldata.csv")
@@ -408,5 +417,5 @@ if __name__ == "__main__":
     test.testMostCommonHashtags(df)
     test.testGetHashtagSentiment(df)'''
     ## Uncomment these for Week 3 ##
-    """print("\n" + "#"*15 + " WEEK 3 OUTPUT " + "#" * 15 + "\n")
-    test.runWeek3()"""
+    print("\n" + "#"*15 + " WEEK 3 OUTPUT " + "#" * 15 + "\n")
+    test.runWeek3()
