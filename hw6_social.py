@@ -309,6 +309,13 @@ Parameters: dict mapping strs to ints ; dict mapping strs to ints ; int ; str
 Returns: None
 '''
 def graphTopNStates(stateCounts, stateFeatureCounts, n, title):
+    featurerate = {}
+    for i in stateFeatureCounts:
+        #print(stateFeatureCounts[i] / stateCounts[i])
+        featurerate[i] = (stateFeatureCounts[i] / stateCounts[i])
+    #print(Counter(featurerate).most_common(5))
+    #sort = list(sorted(s.items(), key=operator.itemgetter(1),reverse=True))[:n]
+    graphStateCounts(dict(Counter(featurerate).most_common(5)), "Top n Feature")
     return
 
 
