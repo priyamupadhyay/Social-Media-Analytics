@@ -3,7 +3,11 @@ Social Media Analytics Project
 Name:
 Roll Number:
 """
+from ast import operator
 
+
+import operator
+from collections import Counter
 import re
 import hw6_social_tests as test
 
@@ -52,7 +56,14 @@ Parameters: str
 Returns: str
 '''
 def parsePosition(fromString):
-    return
+    f1 = fromString.find("From:")
+    f2 = fromString.find("(")
+    if len(fromString)>f2:
+        fromString = fromString[0:f1:] + fromString[f2+1::]
+        f3 = fromString.find(" from")
+        f4 = fromString.find(")")
+        fromString = fromString[0:f3:] + fromString[f4+1::]
+    return fromString
 
 
 '''
@@ -104,7 +115,6 @@ Parameters: SentimentIntensityAnalyzer ; str
 Returns: str
 '''
 def findSentiment(classifier, message):
-    score = classifier.polarity_scores(message)['compound']
     return
 
 
@@ -115,7 +125,6 @@ Parameters: dataframe
 Returns: None
 '''
 def addSentimentColumn(data):
-    classifier = SentimentIntensityAnalyzer()
     return
 
 
@@ -125,7 +134,7 @@ getDataCountByState(data, colName, dataToCount)
 Parameters: dataframe ; str ; str
 Returns: dict mapping strs to ints
 '''
-def getDataCountByState(data, colName, dataToCount):
+def getDataCountByState(data, colName, dataToCount):    
     return
 
 
@@ -155,7 +164,7 @@ mostCommonHashtags(hashtags, count)
 Parameters: dict mapping strs to ints ; int
 Returns: dict mapping strs to ints
 '''
-def mostCommonHashtags(hashtags, count):
+def mostCommonHashtags(hashtags, count): 
     return
 
 
@@ -178,7 +187,6 @@ Parameters: dict mapping strs to ints ; str
 Returns: None
 '''
 def graphStateCounts(stateCounts, title):
-    import matplotlib.pyplot as plt
     return
 
 
@@ -269,19 +277,18 @@ def scatterPlot(xValues, yValues, labels, title):
 
 # This code runs the test cases to check your work
 if __name__ == "__main__":
-    """print("\n" + "#"*15 + " WEEK 1 TESTS " +  "#" * 16 + "\n")
+    '''print("\n" + "#"*15 + " WEEK 1 TESTS " +  "#" * 16 + "\n")
     test.week1Tests()
     print("\n" + "#"*15 + " WEEK 1 OUTPUT " + "#" * 15 + "\n")
-    test.runWeek1()"""
+    test.runWeek1()'''
     test.testMakeDataFrame()
     test.testParseName()
-
+    test.testParsePosition()
     ## Uncomment these for Week 2 ##
-    """print("\n" + "#"*15 + " WEEK 2 TESTS " +  "#" * 16 + "\n")
+    '''print("\n" + "#"*15 + " WEEK 2 TESTS " +  "#" * 16 + "\n")
     test.week2Tests()
     print("\n" + "#"*15 + " WEEK 2 OUTPUT " + "#" * 15 + "\n")
-    test.runWeek2()"""
-
+    test.runWeek2()'''
     ## Uncomment these for Week 3 ##
     """print("\n" + "#"*15 + " WEEK 3 OUTPUT " + "#" * 15 + "\n")
     test.runWeek3()"""
