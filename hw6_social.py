@@ -186,8 +186,23 @@ getDataCountByState(data, colName, dataToCount)
 Parameters: dataframe ; str ; str
 Returns: dict mapping strs to ints
 '''
-def getDataCountByState(data, colName, dataToCount):    
-    return
+def getDataCountByState(data, colName, dataToCount):  
+    #count = data[colName].value_counts()[dataToCount]
+    #count = data.groupby([colName]).size()
+    dict1 ={}
+    for index, row in data.iterrows():
+        if len(colName) !=0 and len(dataToCount) !=0:
+            if (row[colName] == dataToCount):
+                if (row["state"] in dict1):
+                    dict1[row["state"]] += 1
+                else:
+                    dict1[row["state"]] = 1
+        else:
+            if row["state"] in dict1:
+                dict1[row["state"]] += 1
+            else:
+                dict1[row["state"]] = 1  
+    return dict1
 
 
 '''
@@ -347,6 +362,11 @@ if __name__ == "__main__":
     test.runWeek2()'''
     test.testFindSentiment()
     test.testAddSentimentColumn()
+    df = pd.read_csv("data/politicaldata.csv")
+    df1 = pd.read_csv("data/statemappings.csv")
+    addColumns(df, df1)
+    addSentimentColumn(df)
+    test.testGetDataCountByState(df)
     ## Uncomment these for Week 3 ##
     """print("\n" + "#"*15 + " WEEK 3 OUTPUT " + "#" * 15 + "\n")
     test.runWeek3()"""
