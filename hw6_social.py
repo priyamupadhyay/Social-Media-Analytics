@@ -73,7 +73,11 @@ Parameters: str
 Returns: str
 '''
 def parseState(fromString):
-    return
+    f1 = fromString.find("From:")
+    f2 = fromString.find("from ")
+    if len(fromString)>f2:
+        fromString = fromString[0:f1:] + fromString[f2+5::]
+    return fromString.replace(")","",1)
 
 
 '''
