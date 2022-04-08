@@ -212,7 +212,15 @@ Parameters: dataframe ; str
 Returns: dict mapping strs to (dicts mapping strs to ints)
 '''
 def getDataForRegion(data, colName):
-    return
+    odict = {}
+    for index, row in data.iterrows():
+        if row['region'] not in odict:
+            odict[row['region']] = {}
+        if row[colName] not in odict[row['region']]:
+            odict[row['region']][row[colName]] = 1
+        else:
+             odict[row['region']][row[colName]] += 1
+    return odict
 
 
 '''
@@ -367,6 +375,7 @@ if __name__ == "__main__":
     addColumns(df, df1)
     addSentimentColumn(df)
     test.testGetDataCountByState(df)
+    test.testGetDataForRegion(df)
     ## Uncomment these for Week 3 ##
     """print("\n" + "#"*15 + " WEEK 3 OUTPUT " + "#" * 15 + "\n")
     test.runWeek3()"""
